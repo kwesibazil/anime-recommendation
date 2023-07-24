@@ -1,0 +1,13 @@
+<swiper-slide class="swiper-slide card d-flex text-white w-50"  v-for="(anime, index) in getState('popularAnime').slice(0,4)" :key="index">
+  <img class="rounded  my-auto"  height="300" :src="anime.main_picture_large" alt="one piece film:red">
+  <div class="card-body w-100">
+  </div>
+  <!-- {{anime.title}}
+  {{anime.status}}
+  {{anime.num_episodes}}
+  {{anime.source}}
+  {{anime.rank}}
+  {{anime.genres}}
+  {{anime.synopsis}} -->
+</swiper-slide>
+
