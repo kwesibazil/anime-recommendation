@@ -1,12 +1,11 @@
 
 export default{
 
-    async fetchPopularAnime({commit}) {
+    async fetchAnime({commit}) {
       try {
-        console.log('kee');
         const res = await fetch('./data/anime.json')
         const anime = await res.json()
-        commit('cleanData', {data: anime, state: 'popularAnime'})
+        commit('cleanData', {data: anime, state: 'anime'})
       } catch (err) {
           console.log(err);
       }

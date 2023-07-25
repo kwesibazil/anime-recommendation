@@ -1,11 +1,24 @@
 import { createStore } from "vuex";
 import {vuexSession} from  '@/libs/vuex-persistence'
 
-
-import state from './state'
 import actions from './actions'
-import getters from './getters'
 import mutations from './mutations'
+
+const state = {
+  end: 6,
+  start: 0,
+  anime: [],
+  interval: 6,
+  totalAnime: 0,
+  isActive: false,
+  navbar: false,
+}
+
+const getters = {
+  getState: state => payload => state[payload],
+  
+}
+
 
 
 export default createStore({
@@ -13,8 +26,5 @@ export default createStore({
   actions,
   getters,
   mutations,
-  // modules:{
-
-  // },
   plugins:[vuexSession.plugin]
 })

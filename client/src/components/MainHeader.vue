@@ -1,13 +1,13 @@
 <template>
   <header class="d-flex justify-content-between align-items-center ">
     <div class="d-flex col-sm-3 col-md-3 col-lg-2 align-items-center">
-      <IconHamburger class="fill-white my- 1 me-2  d-md-none"/>
-      <span class=" text-white fs-3 bw-bolder mb-1">Dashboard</span>
+      <IconHamburger class="fill-white my- 1 me-2  "/>
+      <span class=" text-white fs-3 bw-bolder mb-1">Company</span>
     </div>
     <form class="col-sm-6 col-md col-lg d-flex justify-content-center" @submit.prevent="submitForm">
       <input class="shadow-sm" type="search" placeholder="Search...">
     </form>
-    <button class="col-md-2 col-md-3 col-lg-4 btn btn-outline-danger me-4 py-1" type="button">Try for Free</button>
+    <button @click="toggleModal" class="col-md-2 col-md-3 col-lg-4 btn btn-outline-danger me-4 py-1" type="button">Try for Free</button>
     <button class="d-none d-lg-block col-md-2 col-md-3 col-lg-4 btn btn-danger py-1" type="button">Login</button>
   </header>
 </template>
@@ -15,8 +15,11 @@
 
 <script setup>
   import {ref} from 'vue'
-  import IconHamburger from '@/components/icons/IconHamburger.vue';
+  import {mapMutations} from '@/libs/vuex'
 
+  import IconHamburger from '@/components/icons/IconHamburger.vue';
+  
+  const {toggleModal} = mapMutations()
   const formData = ref('')
 
   const submitForm = async() => {

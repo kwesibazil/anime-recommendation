@@ -1,22 +1,53 @@
 export default{
   toggleNav (state) {
-    state.isHidden.navbar = !state.isHidden.navbar
-    // const body = document.querySelector("body")
-    // body.classList.toggle('overflow-hidden')
+    state.navbar = !state.navbar
+  },
+  
+  toggleModal (state) {
+    state.isActive = !state.isActive
   },
 
   setState(state, payload){
     state[payload.state] = payload.data
   },
 
-  cleanData(state, payload){
-    const genres = []
+  increment(state){
+    if(state.end >= state.totalAnime) return
 
-    
+    state.start = state.start + state.interval
+    state.end = state.end + state.interval
+  },
+
+  decrement(state){
+    if(state.start == 0) return
+
+    state.start = state.start - state.interval
+    state.end = state.end - state.interval
+  },
+
+  firstColumn(state){
+    state.start = 0
+    state.end = 6
+  },
+
+  LastColumn(state){
+    state.start = state.totalAnime - (state.totalAnime % state.interval)
+    state.end = state.totalAnime
+  },
+
+
+
+
+  cleanData(state, payload){
     payload.data.forEach(data => {
-      // const temp = data.split(",")
-      // genres.push(temp)
+      data.genres = data.genres.replace(/[^a-z0-9,]/gi, "")
+      data.genres = data.genres.split(",")  
+      data.studios = data.studios.replace(/[^a-z0-9,]/gi, "")
+      data.studios = data.studios.split(",")   
+      data.status =  data.status === 'finished_airing' ? 'Finished' : "On-going"
     })
-    console.log(genres);
+    state.totalAnime = payload.data.length
+    state[payload.state] = payload.data
   }
 }
+

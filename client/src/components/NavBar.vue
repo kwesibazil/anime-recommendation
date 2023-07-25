@@ -1,8 +1,8 @@
 <template>
   <div class="w-auto">
-    <div @click="toggleNav" class="overlay-box" :class="{'overlay-box-collapse': getObjState({obj:'isHidden', prop:'navbar'})}"></div>
+    <div @click="toggleNav" class="overlay-box" :class="{'overlay-box-collapse': getState('navbar')}"></div>
     <nav class="navbar navbar-expand-md navbar-dark flex-column pb-0"
-      :class="{'navbar-collapse': getObjState({obj:'isHidden', prop:'navbar'})}"
+      :class="{'navbar-collapse': getState('navbar')}"
     > 
       <ul class="navbar-nav flex-grow-1 flex-column w-100 px-3">
         <li class="nav-item mb-3">
@@ -34,7 +34,7 @@
   import IconBoxRight from '@/components/icons/IconBoxRight.vue'
   import IconBookHalf from '@/components/icons/IconBookHalf.vue'
 
-  const {getObjState} = mapGetters()
+  const {getState} = mapGetters()
   const {toggleNav} = mapMutations()
 </script>
 
@@ -64,7 +64,6 @@
     background-color: #eb0f0f94;
   }
 
-  
   .navbar{
     width: auto;
     width: 245px;
